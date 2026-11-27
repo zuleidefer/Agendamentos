@@ -1,9 +1,11 @@
-﻿using Agendamentos.Domain.Entities;
+﻿using Agendamentos.Application.Abstractions;
+using Agendamentos.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+
 
 namespace Agendamentos.Infrastructure.Persistence;
 
-public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
+public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options), IAppDbContext
 {
     public DbSet<Customer> Customers => Set<Customer>();
     public DbSet<Professional> Professionals => Set<Professional>();
